@@ -17,13 +17,14 @@ public class MarkdownParse {
             if (nextOpenBracket < 0){
                 break;
             }
-            System.out.println("Next Open Bracket:" + nextOpenBracket);
-            int nextCloseBracket = markdown.indexOf("]", nextOpenBracket); //check open is consecutive
-            System.out.println("Next Close Bracket:" + nextCloseBracket);
+            System.out.println("Next open bracket: " + nextOpenBracket);
+            //int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
+            int nextCloseBracket = markdown.indexOf("](", nextOpenBracket);
+            System.out.println("Next close bracket: " + nextCloseBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
-            System.out.println("Open Parenthesis:" + openParen);
+            System.out.println("Open paren: " + openParen);
             int closeParen = markdown.indexOf(")", openParen);
-            System.out.println("Close Parenthesis:" + closeParen);
+            System.out.println("Close paren: " + closeParen);
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
         }
