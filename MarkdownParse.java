@@ -14,11 +14,11 @@ public class MarkdownParse {
             System.out.println("Markdown Length:" + markdown.length());
             System.out.println("Current Index:" + currentIndex); //intially prints 0 and 41
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
-            if (nextOpenBracket < 0){
+            //add to break the for loop
+            if (nextOpenBracket < 0) {
                 break;
             }
             System.out.println("Next open bracket: " + nextOpenBracket);
-            //int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             int nextCloseBracket = markdown.indexOf("](", nextOpenBracket);
             System.out.println("Next close bracket: " + nextCloseBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
