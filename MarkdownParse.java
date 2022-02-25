@@ -12,7 +12,17 @@ public class MarkdownParse {
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
             System.out.println("Markdown Length:" + markdown.length());
-            System.out.println("Current Index:" + currentIndex); //intially prints 0 and 41
+            System.out.println("Current Index:" + currentIndex); 
+
+            int firstBacktick = markdown.indexOf("`[", currentIndex);
+            int secondBacktick = markdown.indexOf("`", firstBacktick);
+            boolean disregard = false;
+            //if there are a set of backticks
+            if(firstBacktick >= 0 && secondBacktick >= 0){
+                System.out.println("invalidate the link with []");
+                disregard = true; 
+            }   
+
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
             //add to break the for loop
             if (nextOpenBracket < 0) {
@@ -25,7 +35,10 @@ public class MarkdownParse {
             System.out.println("Open paren: " + openParen);
             int closeParen = markdown.indexOf(")", openParen);
             System.out.println("Close paren: " + closeParen);
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
+            if(!disregard){
+                toReturn.add(markdown.substring(openParen + 1, closeParen));
+            }
+            
             currentIndex = closeParen + 1;
         }
         return toReturn;
