@@ -19,6 +19,7 @@ public class MarkdownParseTest {
         List<String> expect = List.of("https://something.com", "some-page.html");
         assertEquals(expect, MarkdownParse.getLinks(contents));
     }
+    
 
     @Test
     public void testSnippet1() throws IOException{
@@ -27,15 +28,19 @@ public class MarkdownParseTest {
             "google.com", "ucsd.edu" );
         assertEquals(expect, MarkdownParse.getLinks(contents));
     }
+     
     
 
+   
     @Test
     public void testSnippet2() throws IOException{
         String contents = Files.readString(Path.of("./snippet2.md"));
         List<String> expect = List.of("a.com", "a.com(())", "example.com");
         assertEquals(expect, MarkdownParse.getLinks(contents));
     }
+     
 
+    
     @Test
     public void testSnippet3() throws IOException{
         String contents = Files.readString(Path.of("./snippet3.md"));
@@ -43,4 +48,5 @@ public class MarkdownParseTest {
         assertEquals(expect, MarkdownParse.getLinks(contents));
     }
 
+    
 }
