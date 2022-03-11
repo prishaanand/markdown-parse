@@ -11,15 +11,15 @@ public class MarkdownParse {
         // the next )
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
-            System.out.println("Markdown Length:" + markdown.length());
-            System.out.println("Current Index:" + currentIndex); 
+           // System.out.println("Markdown Length:" + markdown.length());
+           // System.out.println("Current Index:" + currentIndex); 
 
             int firstBacktick = markdown.indexOf("`[", currentIndex);
             int secondBacktick = markdown.indexOf("`", firstBacktick);
             boolean disregard = false;
             //if there are a set of backticks
             if(firstBacktick >= 0 && secondBacktick >= 0){
-                System.out.println("invalidate the link with []");
+                //System.out.println("invalidate the link with []");
                 disregard = true; 
             }   
 
@@ -28,16 +28,16 @@ public class MarkdownParse {
             if (nextOpenBracket < 0) {
                 break;
             }
-            System.out.println("Next open bracket: " + nextOpenBracket);
+          //  System.out.println("Next open bracket: " + nextOpenBracket);
 
             int nextCloseBracket = markdown.indexOf("](", nextOpenBracket);
-            System.out.println("Next close bracket: " + nextCloseBracket);
+           // System.out.println("Next close bracket: " + nextCloseBracket);
 
             int openParen = markdown.indexOf("(", nextCloseBracket);
-            System.out.println("Open paren: " + openParen);
+            //System.out.println("Open paren: " + openParen);
 
             int closeParen = markdown.indexOf(")", openParen);
-            System.out.println("Close paren: " + closeParen);
+            //System.out.println("Close paren: " + closeParen);
             
             String returnText = markdown.substring(openParen + 1, closeParen);
             
